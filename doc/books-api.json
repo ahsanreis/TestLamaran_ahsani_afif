@@ -1,0 +1,308 @@
+{
+    "openapi":"3.0.3",
+    "info": {
+      "title":"Books Api",
+      "version":"1.0"
+    },
+    "servers": [
+      {"url":"https://localhost:8000"}
+    ],
+    "paths": {
+        "/api/books":{
+            "get" : {
+                "description": "Get all books",
+                "parameters" : [
+                    {
+                        "name" : "page",
+                        "in" : "query"
+                    },
+                    {
+                        "name" : "size",
+                        "in" : "query"
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "Successfully Get all books",
+                        "content": {
+                            "application/json": {
+                                "schema" : {
+                                    "type": "object",
+                                    "properties": {
+                                        "data" :{
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "title": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    },
+                                                    "publish_date": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "errors" :{
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new book",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type" : "object",
+                                "required": [
+                                    "title"
+                                ],
+                                "properties": {
+                                    "title":{
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "publish_date": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201" : {
+                        "description": "Successfully Create a new book",
+                        "content": {
+                            "application/json": {
+                                "schema" : {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id" : {
+                                                    "type": "number"
+                                                },
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "publish_date": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/books/{idBook}": {
+            "get" : {
+                "description": "Get Specific Book By Id",
+                "parameters": [
+                    {
+                        "name" : "idBook",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "Successfully Get Specific Book By Id",
+                        "content": {
+                            "application/json": {
+                                "schema" : {
+                                    "type": "object",
+                                    "properties": {
+                                        "data" : {
+                                            "type": "object",
+                                            "properties": {
+                                                "id" : {
+                                                    "type": "number"
+                                                },
+                                                "title" : {
+                                                    "type": "string"
+                                                },
+                                                "description" : {
+                                                    "type": "string"
+                                                },
+                                                "publish_date" : {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "errors" : {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update Specific Book By Id",
+                "parameters": [
+                    {
+                        "name" : "idBook",
+                        "in": "path"
+                    }
+                ],
+                "requestBody" : {
+                    "description": "Update Book By Id",
+                    "content": {
+                        "application/json" : {
+                            "schema" : {
+                                "type": "object",
+                                "properties": {
+                                    "title" : {
+                                        "type" : "string"
+                                    },
+                                    "description" : {
+                                        "type": "string"
+                                    },
+                                    "publish_date" : {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Successfully Update Book By Id",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id" : {
+                                                    "type": "number"
+                                                },
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "description" : {
+                                                    "type": "string"
+                                                },
+                                                "publish_date" : {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            },
+            "delete" : {
+                "description": "Delete Specific Book By Id",
+                "parameters": [
+                    {
+                        "name" : "idBook",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "Successfully Delete Book By Id",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "boolean"
+                                        },
+                                        "errors" : {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/authors/{idAuthor}/books": {
+            "get": {
+                "description": "Get All Books By Author Id",
+                "parameters": [
+                    {
+                        "name" : "idAuthor",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Get All Books By Author Id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items" : {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number"
+                                                    },
+                                                    "title" : {
+                                                        "type": "string"
+                                                    },
+                                                    "description" : {
+                                                        "type": "string"
+                                                    },
+                                                    "publish_date" : {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "errors" : {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }

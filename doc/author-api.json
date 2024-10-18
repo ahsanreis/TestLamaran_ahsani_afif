@@ -1,0 +1,263 @@
+{
+    "openapi":"3.0.3",
+    "info": {
+      "title":"Authors API",
+      "version":"1.0"
+    },
+    "servers": [
+      {"url":"https://localhost:8000"}
+    ],
+    "paths": {
+        "/api/authors": {
+            "post" : {
+                "description" : "Create a new author",
+                "requestBody": {
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type": "object",
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name" : {
+                                        "type": "string"
+                                    },
+                                    "bio" : {
+                                        "type" : "string"
+                                    },
+                                    "dob" : {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201" : {
+                        "description": "Success Created Author",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type": "object",
+                                    "properties": {
+                                        "data" : {
+                                            "type": "object",
+                                            "properties": {
+                                                "id" : {
+                                                    "type": "integer"
+                                                },
+                                                "name" : {
+                                                    "type": "string"
+                                                },
+                                                "bio" : {
+                                                    "type": "string"
+                                                },
+                                                "dob": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get" : {
+                "description": "Get list all authors",
+                "parameters" : [
+                    {
+                        "name" : "page",
+                        "in" : "query"
+                    },
+                    {
+                        "name" : "size",
+                        "in" : "query"
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "Success Get All Author",
+                        "content" : {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data" : {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id" : {
+                                                        "type": "integer"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "bio" : {
+                                                        "type": "string"
+                                                    },
+                                                    "dob" : {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/authors/{id}": {
+            "get": {
+                "description": "Get Specific Author By Id",
+                "parameters": [
+                    {
+                        "name" : "id",
+                        "in" : "path"
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "Sucessfully Get Specific Author",
+                        "content" : {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "name" : {
+                                                    "type": "string"
+                                                },
+                                                "bio" :{
+                                                    "type": "string"
+                                                },
+                                                "dob" : {
+                                                    "type": "number"
+                                                }
+                                            }
+
+                                        },
+                                        "errors" : {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put" : {
+                "description": "Update Specific Author By Id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Update Author By Id",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "bio": {
+                                        "type": "string"
+                                    },
+                                    "dob" : {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success Update Author",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "name" : {
+                                                    "type": "string"
+                                                },
+                                                "bio": {
+                                                    "type": "string"
+                                                },
+                                                "dob": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "errors" : {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete" : {
+                "description": "Delete Specific Author By Id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Delete Author",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data" : {
+                                            "type": "boolean"
+                                        },
+                                        "errors" : {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
