@@ -10,15 +10,21 @@
 ## Installation
 1. **Clone the Repository:**
 
-    ```bash git clone https://github.com/ahsanreis/TestLamaran_ahsani_afif.git ``` 
+    ```bash 
+    git clone https://github.com/ahsanreis/TestLamaran_ahsani_afif.git 
+    ``` 
 
 2. **Navigate to Project Directory** 
-    ```bash cd project-name ```
+    ```bash 
+    cd project-name 
+    ```
 
 3. **Copy `.env.example` to `.env`**
 
 4. **Generate Application Key**
-    ```bash php artisan key:generate ```
+    ```bash 
+    php artisan key:generate 
+    ```
 
 5. **Setup your database in `.env`**
     ```dotenv 
@@ -53,7 +59,9 @@ To view API documentation, See it with Swagger (openAPI).
 1. **Install OpenAPI**
     If you using VSCODE, install `OpenAPI(Swagger) Editor by 42Crunch`.
 2. **Navigate to File**
-    API documentation are in file `Doc`.
-    ```bash cd doc```
+    API documentation are in file `doc`.
+    ```bash 
+    cd doc
+    ```
 3. **(optional) UI Preview**
-    Open Command Palette using Ctrl + Shift + P (VSCODE default) when opening API documentation file.
+    Open Command Palette using ```Ctrl + Shift + P``` (VSCODE default) when opening API documentation file.
