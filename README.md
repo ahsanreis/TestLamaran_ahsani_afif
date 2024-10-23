@@ -65,3 +65,6 @@ To view API documentation, See it with Swagger (openAPI).
     ```
 3. **(optional) UI Preview**
     Open Command Palette using ```Ctrl + Shift + P``` (VSCODE default) when opening API documentation file.
+
+# Live-code-test
+untuk menjalankan live test, dapat menjalankan ```php artisan serve``` dan proses operasi berada pada ```app > Http > COntrollers > operationController.php```
