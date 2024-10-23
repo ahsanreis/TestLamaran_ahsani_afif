@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\operationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $operation = new operationController();
+    return $operation->countPairs([1,2,3,4,5], 6);
 });
